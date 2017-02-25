@@ -2,6 +2,8 @@
 #ifndef _H_escena_H_
 #define _H_escena_H_
 #include "tipos.h"
+#include "Triangulo.h"
+#include "PiramideTri.h"
 
 //-------------------------------------------------------------------------
 class Ejes {
@@ -22,8 +24,11 @@ public:
   ~Escena();
   void init();
   void draw();
+  void drawDiabolo();
 public:
   Ejes ejes;
+  //Triangulo* tri1 = new Triangulo(50);
+  PiramideTri* piramide = new PiramideTri(50, 100);
 };
 
 //-------------------------------------------------------------------------

@@ -69,11 +69,13 @@
   <ItemGroup>
     <ClCompile Include="escena.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PiramideTri.cpp" />
     <ClCompile Include="tipos.cpp" />
     <ClCompile Include="Triangulo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="escena.h" />
+    <ClInclude Include="PiramideTri.h" />
     <ClInclude Include="tipos.h" />
     <ClInclude Include="Triangulo.h" />
   </ItemGroup>
