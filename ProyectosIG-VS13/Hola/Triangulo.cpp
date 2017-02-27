@@ -23,6 +23,7 @@ Triangulo::~Triangulo()
 {
 }
 
+//Pone un vertice en el eje Z con la altura que se pasa
 void Triangulo::verticeZ(int numVert, GLdouble altura) {
 	CoordenadasTriangulo[numVert] = { 0,0,altura };
 	for (int i = 0; i < 3; i++) { normales[i] = makenormal(); }

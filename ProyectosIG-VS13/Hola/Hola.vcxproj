@@ -70,14 +70,18 @@
     <ClCompile Include="escena.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PiramideTri.cpp" />
+    <ClCompile Include="Rectangulo.cpp" />
     <ClCompile Include="tipos.cpp" />
     <ClCompile Include="Triangulo.cpp" />
+    <ClCompile Include="TriAnimado.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="escena.h" />
     <ClInclude Include="PiramideTri.h" />
+    <ClInclude Include="Rectangulo.h" />
     <ClInclude Include="tipos.h" />
     <ClInclude Include="Triangulo.h" />
+    <ClInclude Include="TriAnimado.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
