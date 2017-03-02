@@ -4,6 +4,7 @@
 #include "tipos.h"
 #include "Triangulo.h"
 #include "PiramideTri.h"
+#include "TriAnimado.h"
 
 //-------------------------------------------------------------------------
 class Ejes {
@@ -29,6 +30,7 @@ public:
   Ejes ejes;
   //Triangulo* tri1 = new Triangulo(50);
   PiramideTri* piramide = new PiramideTri(50, 100);
+  TriAnimado* triA = new TriAnimado(50, 100, 25, 25);
 };
 
 //-------------------------------------------------------------------------

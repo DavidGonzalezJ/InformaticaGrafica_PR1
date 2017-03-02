@@ -20,7 +20,8 @@ void Escena::draw(){
   ejes.draw();
   //tri1->draw();
   //piramide->draw();
-  drawDiabolo();
+  //drawDiabolo();
+  triA->draw();
 }
 
 //-------------------------------------------------------------------------

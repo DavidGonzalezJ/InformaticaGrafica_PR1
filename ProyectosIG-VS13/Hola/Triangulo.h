@@ -10,6 +10,7 @@ public:
 	void verticeZ(int numVert, GLdouble altura);
 
 protected:
+	GLdouble radio;
 	PVec3 CoordenadasTriangulo[3];
 	PVec3 normales[3];
 	PVec3 colores[3];

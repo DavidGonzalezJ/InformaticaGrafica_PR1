@@ -163,7 +163,7 @@ void key(unsigned char key, int x, int y){
 	  camera.setEZ();
 	  break;
   case 't':
-	  
+	  escena.triA->update();
 	  break;
   default:
     need_redisplay = false;

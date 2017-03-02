@@ -5,7 +5,7 @@ Triangulo::Triangulo()
 {
 }
 
-Triangulo::Triangulo(GLdouble radio)
+Triangulo::Triangulo(GLdouble radio):radio(radio)
 {
 	colores[0].set(1, 0, 0);
 	colores[1].set(0, 0, 1);
