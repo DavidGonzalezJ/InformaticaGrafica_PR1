@@ -21,7 +21,7 @@ void Escena::draw(){
   //tri1->draw();
   //piramide->draw();
   //drawDiabolo();
-  triA->draw();
+  //triA->draw();
 }
 
 //-------------------------------------------------------------------------

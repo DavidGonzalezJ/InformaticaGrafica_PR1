@@ -1,4 +1,4 @@
-#include "Rectangulo.h"
+﻿#include "Rectangulo.h"
 
 
 
@@ -15,6 +15,7 @@ Rectangulo::~Rectangulo()
 }
 
 void Rectangulo::draw()const {
+
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glVertexPointer(3, GL_DOUBLE, 0, vertices);
 	glEnableClientState(GL_COLOR_ARRAY);
@@ -29,3 +30,13 @@ void Rectangulo::draw()const {
 	glDisableClientState(GL_VERTEX_ARRAY);
 
 }
+/*
+Define una clase Rectangulo para guardar las coordenadas 3D de los cuatro vértices y
+sus coordenadas de textura, un atributo para el color y otro para el vector normal.
+Una constructora con dos argumentos para el ancho y el alto, que genera los vértices
+del rectángulo centrado en el plano Z=0 y paralelo a los ejes X e Y. La constructora
+asignará las coordenadas de textura para que aparezca toda la imagen en el
+rectángulo. El método draw() utiliza GL_TRIANGLE_STRIP y glNormal3*() y
+glColor4*(color). Añade un método set(ancho, alto) para modificar el tamaño del
+rectángulo.
+*/

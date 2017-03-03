@@ -57,6 +57,20 @@ public:
   GLsizei w, h;
 };
 
+class CText2{
+public:
+	CText2(GLdouble s, GLdouble t);
+	~CText2();
+	GLdouble s, t;
+};
+
+class Color4{
+public:
+	Color4(GLdouble r, GLdouble g, GLdouble b, GLdouble a);
+	~Color4();
+	GLdouble r, g, b, a;
+};
+
 //-------------------------------------------------------------------------
 
 #endif //_H_tipos_H_

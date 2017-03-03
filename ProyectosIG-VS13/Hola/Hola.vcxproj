@@ -70,7 +70,9 @@
     <ClCompile Include="escena.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PiramideTri.cpp" />
+    <ClCompile Include="PixMap24RGB.cpp" />
     <ClCompile Include="Rectangulo.cpp" />
+    <ClCompile Include="Textura.cpp" />
     <ClCompile Include="tipos.cpp" />
     <ClCompile Include="Triangulo.cpp" />
     <ClCompile Include="TriAnimado.cpp" />
@@ -78,7 +80,9 @@
   <ItemGroup>
     <ClInclude Include="escena.h" />
     <ClInclude Include="PiramideTri.h" />
+    <ClInclude Include="PixMap24RGB.h" />
     <ClInclude Include="Rectangulo.h" />
+    <ClInclude Include="Textura.h" />
     <ClInclude Include="tipos.h" />
     <ClInclude Include="Triangulo.h" />
     <ClInclude Include="TriAnimado.h" />

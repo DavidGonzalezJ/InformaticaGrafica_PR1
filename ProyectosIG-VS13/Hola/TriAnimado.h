@@ -13,5 +13,6 @@ private:
 	GLdouble radioGiro;
 	GLdouble anguloAcumuladoGiro;
 	GLdouble anguloAcumuladoRot;
+	PVec3 centro = { radioGiro, 0, 0 };
 };
 
