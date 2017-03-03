@@ -20,24 +20,26 @@ void Escena::draw(){
   ejes.draw();
   //tri1->draw();
   //piramide->draw();
-  //drawDiabolo();
-  //triA->draw();
+  drawDiabolo();
+  triA->draw();
 }
 
 //-------------------------------------------------------------------------
 
 void Escena::drawDiabolo() {
-		glRotated(90.0, 1.0, 0.0, 0.0);
-		glTranslated(0.0, 0.0, -piramide->getAltura());
-		piramide->draw();
-		glRotated(60.0, 0.0, 0.0, 1.0);
-		piramide->draw();
+	glPushMatrix();
+	glRotated(90.0, 1.0, 0.0, 0.0);
+	glTranslated(0.0, 0.0, -piramide->getAltura());
+	piramide->draw();
+	glRotated(60.0, 0.0, 0.0, 1.0);
+	piramide->draw();
 
-		glRotated(180.0, 1.0, 0.0, 0.0);
-		glTranslated(0.0,0.0 , -2 * piramide->getAltura());
-		piramide->draw();
-		glRotated(60.0, 0.0, 0.0, 1.0);
-		piramide->draw();
+	glRotated(180.0, 1.0, 0.0, 0.0);
+	glTranslated(0.0,0.0 , -2 * piramide->getAltura());
+	piramide->draw();
+	glRotated(60.0, 0.0, 0.0, 1.0);
+	piramide->draw();
+	glPopMatrix();
 }
 
 
