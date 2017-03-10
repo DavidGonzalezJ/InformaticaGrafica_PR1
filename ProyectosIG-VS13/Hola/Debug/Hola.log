@@ -1,4 +1,14 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Hola.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  TriAnimado.cpp
+  Triangulo.cpp
+  tipos.cpp
+  Textura.cpp
+  Rectangulo.cpp
+  PixMap24RGB.cpp
+  PiramideTri.cpp
+  main.cpp
   escena.cpp
-  Hola.vcxproj -> C:\Users\Patricia\Documents\UNIVERSIDAD\InformaticaGrafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.exe
-  Hola.vcxproj -> C:\Users\Patricia\Documents\UNIVERSIDAD\InformaticaGrafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.pdb (Full PDB)
+  Generando código...
+  LINK : no se encontró C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  Hola.vcxproj -> C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.exe
+  Hola.vcxproj -> C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.pdb (Full PDB)

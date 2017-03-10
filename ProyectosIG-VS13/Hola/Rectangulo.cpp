@@ -2,12 +2,14 @@
 
 
 
-Rectangulo::Rectangulo(GLdouble base, GLdouble altura)
+Rectangulo::Rectangulo(GLdouble base, GLdouble altura):textura(base,altura)
 {
 	vertices[0] = { 0.0,0.0,0.0 };
 	vertices[1] = {base,0.0,0.0 };
 	vertices[2] = { base,altura,0.0 };
 	vertices[3] = { 0.0,altura,0.0 };
+	//textura.s = base;
+	//textura.t = altura;
 }
 
 Rectangulo::~Rectangulo()

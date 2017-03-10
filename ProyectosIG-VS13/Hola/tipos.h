@@ -59,15 +59,15 @@ public:
 
 class CText2{
 public:
-	CText2(GLdouble s, GLdouble t);
-	~CText2();
+	CText2(GLdouble s, GLdouble t) :s(s), t(t) {};
+	~CText2() {};
 	GLdouble s, t;
 };
 
 class Color4{
 public:
-	Color4(GLdouble r, GLdouble g, GLdouble b, GLdouble a);
-	~Color4();
+	Color4(GLdouble r, GLdouble g, GLdouble b, GLdouble a) :r(r), g(g), b(b), a(a) {};
+	~Color4() {};
 	GLdouble r, g, b, a;
 };
 
