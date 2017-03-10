@@ -5,6 +5,8 @@
 #include "Triangulo.h"
 #include "PiramideTri.h"
 #include "TriAnimado.h"
+#include "Textura.h"
+#include "Rectangulo.h"
 
 //-------------------------------------------------------------------------
 class Ejes {
@@ -31,6 +33,8 @@ public:
   //Triangulo* tri1 = new Triangulo(50);
   PiramideTri* piramide = new PiramideTri(50, 100);
   TriAnimado* triA = new TriAnimado(25, 200, 5, 25);
+  Textura tex;
+  Rectangulo* rect = new Rectangulo(200,150);
 };
 
 //-------------------------------------------------------------------------

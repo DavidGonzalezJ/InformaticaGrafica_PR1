@@ -1,15 +1,6 @@
 #include "Textura.h"
 #include "PixMap24RGB.h"
 
-Textura::Textura()
-{
-}
-
-
-Textura::~Textura()
-{
-}
-
 bool Textura::load(const std::string & BMP_Name) {
 	// la textura debe estar inicializada -> escena::init()
 	PixMap24RGB pixMap;
@@ -17,6 +8,9 @@ bool Textura::load(const std::string & BMP_Name) {
 								  // carga correcta??
 	w = pixMap.width();
 	h = pixMap.height();
+	//A ver si así
+	pA[w*h];
+
 	glBindTexture(GL_TEXTURE_2D, id); // transferir a openGL
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB,
 		GL_UNSIGNED_BYTE, pixMap.map());

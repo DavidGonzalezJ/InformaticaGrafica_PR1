@@ -5,6 +5,9 @@
 
 void Escena::init(){
   // texturas
+	glEnable(GL_TEXTURE_2D);
+	tex.init();
+	tex.load("..\\bmps\\Zelda.bmp");
   // luces
 }
 
@@ -20,8 +23,9 @@ void Escena::draw(){
   ejes.draw();
   //tri1->draw();
   //piramide->draw();
-  drawDiabolo();
-  triA->draw();
+  //drawDiabolo();
+  //triA->draw();
+  rect->draw();
 }
 
 //-------------------------------------------------------------------------

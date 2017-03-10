@@ -5,10 +5,13 @@
   Textura.cpp
   Rectangulo.cpp
   PixMap24RGB.cpp
+c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(154): warning C4018: '<': no coinciden signed/unsigned
+c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(207): warning C4018: '<': no coinciden signed/unsigned
+c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(257): warning C4018: '<': no coinciden signed/unsigned
+c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(278): warning C4018: '<': no coinciden signed/unsigned
   PiramideTri.cpp
   main.cpp
   escena.cpp
   Generando código...
-  LINK : no se encontró C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Hola.vcxproj -> C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.exe
   Hola.vcxproj -> C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.pdb (Full PDB)

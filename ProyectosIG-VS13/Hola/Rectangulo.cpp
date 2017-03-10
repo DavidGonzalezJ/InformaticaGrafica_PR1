@@ -2,7 +2,7 @@
 
 
 
-Rectangulo::Rectangulo(GLdouble base, GLdouble altura):textura(base,altura)
+Rectangulo::Rectangulo(GLdouble base, GLdouble altura):coordTex(base,altura)
 {
 	vertices[0] = { 0.0,0.0,0.0 };
 	vertices[1] = {base,0.0,0.0 };
@@ -22,10 +22,12 @@ void Rectangulo::draw()const {
 	glVertexPointer(3, GL_DOUBLE, 0, vertices);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glColorPointer(3, GL_DOUBLE, 0, colores);
+	//glColor4
+	//glNormal3b
 
 	glLineWidth(2);
-	glDrawArrays(GL_TRIANGLE_STRIP , 0, 3);
-	glDrawArrays(GL_LINE_LOOP, 0, 3);
+	glDrawArrays(GL_TRIANGLE_STRIP , 0, 4);
+	//glDrawArrays(GL_LINE_LOOP, 0, 4);
 	glLineWidth(1);
 
 	glDisableClientState(GL_COLOR_ARRAY);
