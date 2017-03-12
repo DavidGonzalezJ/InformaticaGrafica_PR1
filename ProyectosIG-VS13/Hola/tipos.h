@@ -66,7 +66,11 @@ public:
 
 class Color4{
 public:
+	Color4() :r(0), g(0), b(0), a(0) {};
 	Color4(GLdouble r, GLdouble g, GLdouble b, GLdouble a) :r(r), g(g), b(b), a(a) {};
+	void set(GLdouble rn, GLdouble gn, GLdouble bn, GLdouble an) {
+		r=rn ; g = gn; b = bn; a = an;
+	}
 	~Color4() {};
 	GLdouble r, g, b, a;
 };

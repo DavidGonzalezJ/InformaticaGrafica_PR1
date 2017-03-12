@@ -8,6 +8,7 @@ void Escena::init(){
 	glEnable(GL_TEXTURE_2D);
 	tex.init();
 	tex.load("..\\bmps\\Zelda.bmp");
+	
   // luces
 }
 

@@ -9,8 +9,14 @@ public:
 		glGenTextures(1, &id); // generar un nombre
 		activar(); glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)/*…*/;
 	}; // establecer filtros
-	void activar() { glBindTexture(GL_TEXTURE_2D, id); glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE/*…*/); };
-	void desactivar() { glBindTexture(GL_TEXTURE_2D, 0); };
+	void activar() {
+		glBindTexture(GL_TEXTURE_2D, id); 
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE/*…*/); 
+	};
+
+	void desactivar() { 
+		glBindTexture(GL_TEXTURE_2D, 0); 
+	};
 	bool load(const std::string & BMP_Name); // cargar y transferir a openGL
 	void save(const std::string & BMP_Name); // obtener de openGL y guardar
 public:

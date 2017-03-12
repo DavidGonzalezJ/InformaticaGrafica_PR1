@@ -1,17 +1,7 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Hola.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  TriAnimado.cpp
-  Triangulo.cpp
-  tipos.cpp
-  Textura.cpp
-  Rectangulo.cpp
-  PixMap24RGB.cpp
-c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(154): warning C4018: '<': no coinciden signed/unsigned
-c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(207): warning C4018: '<': no coinciden signed/unsigned
-c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(257): warning C4018: '<': no coinciden signed/unsigned
-c:\users\vixad\searches\escritorio\informatica grafica\informaticagrafica_pr1\proyectosig-vs13\hola\pixmap24rgb.cpp(278): warning C4018: '<': no coinciden signed/unsigned
-  PiramideTri.cpp
-  main.cpp
   escena.cpp
+  Rectangulo.cpp
+c:\users\patricia\documents\universidad\informaticagrafica\informaticagrafica_pr1\proyectosig-vs13\hola\rectangulo.cpp(29): error C2664: 'void glTexCoordPointer(GLint,GLenum,GLsizei,const GLvoid *)': el argumento 4 no puede convertirse de 'Textura' a 'const GLvoid *'
+  c:\users\patricia\documents\universidad\informaticagrafica\informaticagrafica_pr1\proyectosig-vs13\hola\rectangulo.cpp(29): note: No hay disponible ningún operador de conversión definido por el usuario que pueda realizar esta conversión, o bien no se puede llamar al operador
   Generando código...
-  Hola.vcxproj -> C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.exe
-  Hola.vcxproj -> C:\Users\vixad\Searches\Escritorio\Informatica Grafica\InformaticaGrafica_PR1\ProyectosIG-VS13\bin\InformaticaGrafica_PR1Debug.pdb (Full PDB)
+cl : Línea de comandos warning D9028: error de recompilación mínimo, revirtiendo a la compilación normal

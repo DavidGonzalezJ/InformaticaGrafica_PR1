@@ -1,5 +1,6 @@
 #pragma once
 #include "tipos.h"
+
 class Rectangulo
 {
 public:
@@ -9,9 +10,10 @@ public:
 
 private:
 	PVec3 vertices[4];
-	PVec3 normal[4];
-	PVec3 colores[4];//Yo creo que eso no hace... eh, no es
-	//Color4* color;
+	PVec3 normal;
+	//PVec3 colores[4];//Yo creo que eso no hace... eh, no es
+	Color4 color;
 	CText2 coordTex;
+	GLvoid * cTextura;
 };
 

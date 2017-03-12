@@ -8,6 +8,8 @@ Rectangulo::Rectangulo(GLdouble base, GLdouble altura):coordTex(base,altura)
 	vertices[1] = {base,0.0,0.0 };
 	vertices[2] = { base,altura,0.0 };
 	vertices[3] = { 0.0,altura,0.0 };
+	normal = { 0,0,1 };
+	color.set(0,0,1,1);
 	//textura.s = base;
 	//textura.t = altura;
 }
@@ -17,8 +19,23 @@ Rectangulo::~Rectangulo()
 }
 
 void Rectangulo::draw()const {
-
 	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnableClientState(GL_TEXTURE_2D);
+
+	glVertexPointer(3, GL_DOUBLE, 0, vertices);
+	glNormal3d(normal.x, normal.y, normal.z);
+
+	glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);
+	glColor4d(color.r, color.g, color.b, color.a);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+/*	glEnableClientState(GL_VERTEX_ARRAY);
 	glVertexPointer(3, GL_DOUBLE, 0, vertices);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glColorPointer(3, GL_DOUBLE, 0, colores);
@@ -31,7 +48,7 @@ void Rectangulo::draw()const {
 	glLineWidth(1);
 
 	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);*/
 
 }
 /*
