@@ -7,7 +7,7 @@ void Escena::init(){
   // texturas
 	glEnable(GL_TEXTURE_2D);
 	tex.init();
-	tex.load("..\\bmps\\Zelda.bmp");
+	tex.load("../bmps/Zelda.bmp");
 	
   // luces
 }
@@ -24,9 +24,9 @@ void Escena::draw(){
   ejes.draw();
   //tri1->draw();
   //piramide->draw();
-  //drawDiabolo();
-  //triA->draw();
-  rect->draw();
+  drawDiabolo();
+  triA->draw();
+ // rect->draw();
 }
 
 //-------------------------------------------------------------------------
@@ -45,6 +45,25 @@ void Escena::drawDiabolo() {
 	glRotated(60.0, 0.0, 0.0, 1.0);
 	piramide->draw();
 	glPopMatrix();
+}
+
+void Escena::rotateDiabolo(char aux){
+
+	switch (aux)
+	{
+	case 'x':
+		glRotated(10.0, 1.0, 0.0, 0.0);
+		break;
+	case 'y':
+		glRotated(10.0, 0.0, 1.0, 0.0);
+		break;
+	case 'z':
+		glRotated(10.0, 0.0, 0.0, 1.0);
+		break;
+	default:
+		break;
+	}
+	//drawDiabolo();
 }
 
 

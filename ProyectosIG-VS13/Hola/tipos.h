@@ -59,7 +59,9 @@ public:
 
 class CText2{
 public:
+	CText2() :s(0), t(0){};
 	CText2(GLdouble s, GLdouble t) :s(s), t(t) {};
+	void set(GLdouble s1, GLdouble t1){ s = s1; t = t1; }
 	~CText2() {};
 	GLdouble s, t;
 };

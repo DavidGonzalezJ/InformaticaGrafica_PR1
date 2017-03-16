@@ -28,13 +28,14 @@ public:
   void init();
   void draw();
   void drawDiabolo();
+  void rotateDiabolo(char aux);
 public:
   Ejes ejes;
   //Triangulo* tri1 = new Triangulo(50);
   PiramideTri* piramide = new PiramideTri(50, 100);
   TriAnimado* triA = new TriAnimado(25, 200, 5, 25);
   Textura tex;
-  Rectangulo* rect = new Rectangulo(200,150);
+  Rectangulo* rect = new Rectangulo(800,600);
 };
 
 //-------------------------------------------------------------------------

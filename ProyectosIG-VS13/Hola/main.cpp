@@ -165,6 +165,15 @@ void key(unsigned char key, int x, int y){
   case 't':
 	  escena.triA->update();
 	  break;
+  case 'x':
+	  escena.rotateDiabolo(key);
+	  break;
+  case 'y':
+	  escena.rotateDiabolo(key);
+	  break;
+  case 'z':
+	  escena.rotateDiabolo(key);
+	  break;
   default:
     need_redisplay = false;
     break;

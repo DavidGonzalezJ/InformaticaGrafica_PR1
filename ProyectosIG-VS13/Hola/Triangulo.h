@@ -13,8 +13,9 @@ protected:
 	GLdouble radio;
 	PVec3 CoordenadasTriangulo[3];
 	PVec3 normales[3];
-	PVec3 colores[3];
+	Color4 colores[3];
 	PVec3 makenormal();
+	CText2 cTextura[4];
 
 };
 

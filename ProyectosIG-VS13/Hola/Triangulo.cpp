@@ -7,9 +7,14 @@ Triangulo::Triangulo()
 
 Triangulo::Triangulo(GLdouble radio):radio(radio)
 {
-	colores[0].set(1, 0, 0);
-	colores[1].set(0, 0, 1);
-	colores[2].set(0, 1, 0);
+	colores[0].set(1, 0, 0, 1);
+	colores[1].set(0, 0, 1, 1);
+	colores[2].set(0, 1, 0, 1);
+	//Coordenadas textura
+	cTextura[0].set(0, 1);
+	cTextura[1].set(0, 0);
+	cTextura[2].set(1, 1);
+	cTextura[3].set(1, 0);
 
 	GLdouble pi = 3.1416;
 	CoordenadasTriangulo[0]={radio,0,0};
@@ -30,15 +35,25 @@ void Triangulo::verticeZ(int numVert, GLdouble altura) {
 }
 
 void Triangulo::draw()const {
-	/*glEnableClientState(GL_COLOR_ARRAY);
-	glColorPointer(3, GL_DOUBLE, 0, colores);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);*/
 
 	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnableClientState(GL_TEXTURE_2D);
+
+	glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
+	glNormal3d(normales[0].x, normales[0].y, normales[0].z);
+	//glNormalPointer(GL_DOUBLE, 3, normales);
+	glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);
+	
+	glColor4d(colores[0].r, colores[0].g, colores[0].b, colores[0].a);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0,3);
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	/*glEnableClientState(GL_VERTEX_ARRAY);
 	glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glColorPointer(3, GL_DOUBLE, 0, colores);
@@ -49,7 +64,7 @@ void Triangulo::draw()const {
 	glLineWidth(1);
 
 	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);*/
 }
 
 PVec3 Triangulo::makenormal() {
