@@ -8,6 +8,10 @@ public:
 	~Triangulo();
 	void draw()const;
 	void verticeZ(int numVert, GLdouble altura);
+	void position(GLdouble x, GLdouble y);
+	void rotate();
+	void actualizaCoord();
+	bool dentro(GLdouble x, GLdouble y);
 
 protected:
 	GLdouble radio;
@@ -16,6 +20,8 @@ protected:
 	Color4 colores[3];
 	PVec3 makenormal();
 	CText2 cTextura[4];
+	GLdouble anguloGiro;
+	PVec3 centro = { 0, 0, 0 };
 
 };
 

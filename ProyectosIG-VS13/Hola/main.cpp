@@ -169,10 +169,12 @@ void key(unsigned char key, int x, int y){
 	  escena.rotateDiabolo(key);
 	  break;
   case 'y':
-	  escena.rotateDiabolo(key);
+	 // escena.rotateDiabolo(key);
+	  escena.triA->rotate();
 	  break;
   case 'z':
-	  escena.rotateDiabolo(key);
+	  escena.triA->position(60,25);
+	  //escena.rotateDiabolo(key);
 	  break;
   default:
     need_redisplay = false;

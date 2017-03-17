@@ -1,12 +1,13 @@
 #include "Triangulo.h"
 
-
+GLdouble pi = 3.1416;
 Triangulo::Triangulo()
 {
 }
 
 Triangulo::Triangulo(GLdouble radio):radio(radio)
 {
+	anguloGiro = 0;
 	colores[0].set(1, 0, 0, 1);
 	colores[1].set(0, 0, 1, 1);
 	colores[2].set(0, 1, 0, 1);
@@ -52,19 +53,6 @@ void Triangulo::draw()const {
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_2D);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-
-	/*glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glColorPointer(3, GL_DOUBLE, 0, colores);
-
-	glLineWidth(2);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDrawArrays(GL_LINE_LOOP, 0, 3);
-	glLineWidth(1);
-
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);*/
 }
 
 PVec3 Triangulo::makenormal() {
@@ -82,5 +70,39 @@ PVec3 Triangulo::makenormal() {
 	resul.y = aux.z*aux2.x - aux.x*aux2.z;
 	resul.z = aux.x*aux2.y - aux.y*aux2.x;
 	resul.normalize();
+
 	return resul;
+}
+
+void Triangulo::position(GLdouble x, GLdouble y){
+	
+	centro = { x, y, 0 };
+	actualizaCoord();
+}
+
+void Triangulo::rotate(){
+	
+	GLdouble rotar = 5*pi / 180;
+	anguloGiro += rotar;
+	actualizaCoord();
+	
+}
+void Triangulo::actualizaCoord(){
+
+	//Ahora lo rotamos
+	CoordenadasTriangulo[0] = { radio*cos(anguloGiro) + centro.x, radio * sin(anguloGiro) + centro.y, CoordenadasTriangulo[0].z + centro.z };
+	CoordenadasTriangulo[1] = { radio*cos(anguloGiro + 2 * pi / 3) + centro.x, radio * sin(anguloGiro + 2 * pi / 3) + centro.y, CoordenadasTriangulo[1].z + centro.z };
+	CoordenadasTriangulo[2] = { radio*cos(anguloGiro + 4 * pi / 3) + centro.x, radio * sin(anguloGiro + 4 * pi / 3) + centro.y, CoordenadasTriangulo[2].z + centro.z };
+
+}
+
+
+bool Triangulo::dentro(GLdouble x, GLdouble y){
+	if ((CoordenadasTriangulo[0].x - x) * (CoordenadasTriangulo[1].y - y) - (CoordenadasTriangulo[0].y - y) * (CoordenadasTriangulo[1].x - x) < 0)
+		return false;
+	else if ((CoordenadasTriangulo[1].x - x) * (CoordenadasTriangulo[2].y - y) - (CoordenadasTriangulo[1].y - y) * (CoordenadasTriangulo[2].x - x) < 0)
+		return false;
+	else if ((CoordenadasTriangulo[2].x - x) * (CoordenadasTriangulo[0].y - y) - (CoordenadasTriangulo[2].y - y) * (CoordenadasTriangulo[0].x - x) < 0)
+		return false;
+	else return true;
 }

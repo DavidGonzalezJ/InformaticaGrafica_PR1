@@ -8,11 +8,9 @@ public:
 	virtual ~TriAnimado();
 	void update();
 private:
-	GLdouble anguloGiro;
 	GLdouble anguloRota;
 	GLdouble radioGiro;
 	GLdouble anguloAcumuladoGiro;
 	GLdouble anguloAcumuladoRot;
-	PVec3 centro = { radioGiro, 0, 0 };
 };
 
