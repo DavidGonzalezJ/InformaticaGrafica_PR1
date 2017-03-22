@@ -20,16 +20,12 @@ TriAnimado::~TriAnimado()
 }
 
 void TriAnimado::update() {
-
-	GLdouble pi = 3.1416;
+		
 	GLdouble transAG = (anguloAcumuladoGiro*pi) / 180;
-	GLdouble transfRad = (anguloAcumuladoRot*pi) / 180;
+	angulo = (anguloAcumuladoRot*pi) / 180;
 	centro = { radioGiro* cos(transAG), radioGiro*sin(transAG),0 };
+	actualizaCoord();
 
-	//Ahora lo rotamos
-	CoordenadasTriangulo[0] = { radio*cos(transfRad) + centro.x, radio * sin(transfRad) + centro.y, CoordenadasTriangulo[0].z + centro.z };
-	CoordenadasTriangulo[1] = { radio*cos(transfRad + 2 * pi / 3) + centro.x, radio * sin(transfRad + 2 * pi / 3) + centro.y, CoordenadasTriangulo[1].z + centro.z };
-	CoordenadasTriangulo[2] = { radio*cos(transfRad + 4 * pi / 3) + centro.x, radio * sin(transfRad + 4 * pi / 3) + centro.y, CoordenadasTriangulo[2].z + centro.z };
 	anguloAcumuladoGiro += anguloGiro;
 	anguloAcumuladoRot += anguloRota;
 }

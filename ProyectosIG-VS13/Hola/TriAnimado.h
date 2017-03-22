@@ -9,6 +9,7 @@ public:
 	void update();
 private:
 	GLdouble anguloRota;
+	GLdouble anguloGiro;
 	GLdouble radioGiro;
 	GLdouble anguloAcumuladoGiro;
 	GLdouble anguloAcumuladoRot;

@@ -1,13 +1,13 @@
 #include "Triangulo.h"
 
-GLdouble pi = 3.1416;
+
 Triangulo::Triangulo()
 {
 }
 
 Triangulo::Triangulo(GLdouble radio):radio(radio)
 {
-	anguloGiro = 0;
+	angulo = 0;
 	colores[0].set(1, 0, 0, 1);
 	colores[1].set(0, 0, 1, 1);
 	colores[2].set(0, 1, 0, 1);
@@ -83,16 +83,16 @@ void Triangulo::position(GLdouble x, GLdouble y){
 void Triangulo::rotate(){
 	
 	GLdouble rotar = 5*pi / 180;
-	anguloGiro += rotar;
+	angulo += rotar;
 	actualizaCoord();
 	
 }
 void Triangulo::actualizaCoord(){
 
 	//Ahora lo rotamos
-	CoordenadasTriangulo[0] = { radio*cos(anguloGiro) + centro.x, radio * sin(anguloGiro) + centro.y, CoordenadasTriangulo[0].z + centro.z };
-	CoordenadasTriangulo[1] = { radio*cos(anguloGiro + 2 * pi / 3) + centro.x, radio * sin(anguloGiro + 2 * pi / 3) + centro.y, CoordenadasTriangulo[1].z + centro.z };
-	CoordenadasTriangulo[2] = { radio*cos(anguloGiro + 4 * pi / 3) + centro.x, radio * sin(anguloGiro + 4 * pi / 3) + centro.y, CoordenadasTriangulo[2].z + centro.z };
+	CoordenadasTriangulo[0] = { radio*cos(angulo) + centro.x, radio * sin(angulo) + centro.y, CoordenadasTriangulo[0].z + centro.z };
+	CoordenadasTriangulo[1] = { radio*cos(angulo + 2 * pi / 3) + centro.x, radio * sin(angulo + 2 * pi / 3) + centro.y, CoordenadasTriangulo[1].z + centro.z };
+	CoordenadasTriangulo[2] = { radio*cos(angulo + 4 * pi / 3) + centro.x, radio * sin(angulo + 4 * pi / 3) + centro.y, CoordenadasTriangulo[2].z + centro.z };
 
 }
 

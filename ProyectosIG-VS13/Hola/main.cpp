@@ -32,9 +32,12 @@ void resize(int newWidth, int newHeight);
 void key(unsigned char key, int x, int y);
 void specialKey(int key, int x, int y);
 void mouse(int button, int state, int x, int y);
+void motion(int x, int y);
+
+//------------ ESTADOS -----------------------------------------------------
+enum Estados{RECORTAR,ANIMAR,COLLAGE,DIABOLO};
 
 //-------------------------------------------------------------------------
-
 void intitGL(){ //OpenGL basic setting
 
   //glEnable(GL_LIGHTING);
@@ -95,6 +98,7 @@ int main(int argc, char *argv[]){
   glutSpecialFunc(specialKey);
   glutDisplayFunc(display);
   glutMouseFunc(mouse);
+  glutMotionFunc(motion);
 
   // OpenGL basic setting
   intitGL();
@@ -103,6 +107,8 @@ int main(int argc, char *argv[]){
   glutSetOption ( GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION ) ; 
 						         // after X-closing the window, continue execution
   glutMainLoop();
+  //David apuesta al caballo ganador
+
 
   cin.sync();
   cin.get();
@@ -140,6 +146,7 @@ void resize(int newWidth, int newHeight){
   camera.setVV(winWidth, winHeight);
 }
 
+
 //-------------------------------------------------------------------------
 
 void key(unsigned char key, int x, int y){
@@ -162,6 +169,9 @@ void key(unsigned char key, int x, int y){
   case 'o':
 	  camera.setEZ();
 	  break;
+  case 'r':
+	  escena.tri->rotate();
+	  break;
   case 't':
 	  escena.triA->update();
 	  break;
@@ -169,12 +179,10 @@ void key(unsigned char key, int x, int y){
 	  escena.rotateDiabolo(key);
 	  break;
   case 'y':
-	 // escena.rotateDiabolo(key);
-	  escena.triA->rotate();
+	  escena.rotateDiabolo(key);
 	  break;
   case 'z':
-	  escena.triA->position(60,25);
-	  //escena.rotateDiabolo(key);
+	 escena.rotateDiabolo(key);
 	  break;
   default:
     need_redisplay = false;
@@ -217,7 +225,15 @@ void specialKey(int key, int x, int y){
 
 void mouse(int button, int state, int x, int y){
   if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_UP)) { // DOWN
-
+	/*int transX = -winWidth / 2 + x;
+	int transY = -(-winHeight/2 + y);
+	if (escena.triA->dentro(transX, transY)) {
+	std::cout << "MANOLITO"<< "\n";
+		
+		
+	}
+	std::cout << x << " " << y << "\n";
+	std::cout << transX << " " << transY << "\n";*/
   }
   else {
 
@@ -226,3 +242,14 @@ void mouse(int button, int state, int x, int y){
 
 //-------------------------------------------------------------------------
 
+void motion(int x, int y){
+	int transX = -winWidth / 2 + x;
+	int transY = -(-winHeight / 2 + y);
+	if (escena.tri->dentro(transX, transY)) {
+		std::cout << "MANOLITO" << "\n";
+		escena.tri->position(transX, transY);
+		glutPostRedisplay();
+	}
+}
+
+//-------------------------------------------------------------------------

@@ -33,7 +33,8 @@ public:
   Ejes ejes;
   //Triangulo* tri1 = new Triangulo(50);
   PiramideTri* piramide = new PiramideTri(50, 100);
-  TriAnimado* triA = new TriAnimado(25, 200, 5, 25);
+  TriAnimado* triA = new TriAnimado(50, 200, 5, 25);
+  Triangulo* tri = new Triangulo(50);
   Textura tex;
   Rectangulo* rect = new Rectangulo(800,600);
 };
