@@ -21,13 +21,13 @@ Escena::~Escena(){
 //-------------------------------------------------------------------------
 
 void Escena::draw(){
+  rect->draw();
   ejes.draw();
+  tri->draw();
   //tri1->draw();
   //piramide->draw();
   //drawDiabolo();
-  triA->draw();
-  tri->draw();
- // rect->draw();
+  //triA->draw();
 }
 
 //-------------------------------------------------------------------------

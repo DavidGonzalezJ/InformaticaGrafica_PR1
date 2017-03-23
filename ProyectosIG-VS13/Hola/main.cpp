@@ -35,7 +35,8 @@ void mouse(int button, int state, int x, int y);
 void motion(int x, int y);
 
 //------------ ESTADOS -----------------------------------------------------
-enum Estados{RECORTAR,ANIMAR,COLLAGE,DIABOLO};
+enum Estado{RECORTAR,ANIMAR,COLLAGE,DIABOLO};
+Estado actState;
 
 //-------------------------------------------------------------------------
 void intitGL(){ //OpenGL basic setting
@@ -91,6 +92,7 @@ int main(int argc, char *argv[]){
 
   // Window construction
   int win = glutCreateWindow( "Freeglut-project" );  // window's identifier
+
     
   // Callback registration
   glutReshapeFunc(resize);
@@ -102,12 +104,13 @@ int main(int argc, char *argv[]){
 
   // OpenGL basic setting
   intitGL();
+  actState = Estado::RECORTAR;
+  glDisable(GL_DEPTH_TEST);
   escena.init();
 
   glutSetOption ( GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION ) ; 
 						         // after X-closing the window, continue execution
   glutMainLoop();
-  //David apuesta al caballo ganador
 
 
   cin.sync();
@@ -184,6 +187,16 @@ void key(unsigned char key, int x, int y){
   case 'z':
 	 escena.rotateDiabolo(key);
 	  break;
+  case '3':
+	  //Capturo las coord de textura y cambio a ANIMAR//
+	 /*Aquí hay que hacer un save de textura o algo ????????????????*/
+	  if (actState == Estado::RECORTAR || actState == Estado::DIABOLO){
+		  actState = Estado::ANIMAR;
+	  }
+	  break;
+  case '4':
+	  actState == Estado::DIABOLO;
+	  break;
   default:
     need_redisplay = false;
     break;
@@ -246,7 +259,7 @@ void motion(int x, int y){
 	int transX = -winWidth / 2 + x;
 	int transY = -(-winHeight / 2 + y);
 	if (escena.tri->dentro(transX, transY)) {
-		std::cout << "MANOLITO" << "\n";
+		//std::cout << "MANOLITO" << "\n";
 		escena.tri->position(transX, transY);
 		glutPostRedisplay();
 	}
