@@ -30,9 +30,9 @@ void Rectangulo::draw()const{
 
 	glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);
 	glColor4d(color.r, color.g, color.b, color.a);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+	
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
+	
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_2D);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);

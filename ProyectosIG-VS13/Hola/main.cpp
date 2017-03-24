@@ -192,10 +192,12 @@ void key(unsigned char key, int x, int y){
 	 /*Aquí hay que hacer un save de textura o algo ????????????????*/
 	  if (actState == Estado::RECORTAR || actState == Estado::DIABOLO){
 		  actState = Estado::ANIMAR;
+		  escena.tri->capturaTextura();
 	  }
 	  break;
   case '4':
 	  actState == Estado::DIABOLO;
+	  glEnable(GL_DEPTH_TEST);
 	  break;
   default:
     need_redisplay = false;

@@ -15,8 +15,8 @@ Triangulo::Triangulo(GLdouble radio):radio(radio)
 	cTextura[0].set(0, 1);
 	cTextura[1].set(0, 0);
 	cTextura[2].set(1, 1);
-	cTextura[3].set(1, 0);
-
+	//cTextura[3].set(1, 0);
+	text = false;
 	GLdouble pi = 3.1416;
 	CoordenadasTriangulo[0]={radio,0,0};
 	CoordenadasTriangulo[1] = { radio * cos(2 * pi / 3) , radio * sin(2 * pi / 3),0 };
@@ -37,23 +37,54 @@ void Triangulo::verticeZ(int numVert, GLdouble altura) {
 
 void Triangulo::draw()const {
 
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	glEnableClientState(GL_TEXTURE_2D);
+	if (!text){
+		glEnableClientState(GL_VERTEX_ARRAY);
+		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);//
+		//glEnableClientState(GL_TEXTURE_2D);//
 
-	glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
-	glNormal3d(normales[0].x, normales[0].y, normales[0].z);
-	//glNormalPointer(GL_DOUBLE, 3, normales);
-	glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);
+		glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
+		glNormal3d(normales[0].x, normales[0].y, normales[0].z);
+		//glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);//
+
+		glColor4d(colores[0].r, colores[0].g, colores[0].b, colores[0].a);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//Dibuja lineas
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);//Dibuja relleno
+		glDisableClientState(GL_VERTEX_ARRAY);
+		//glDisableClientState(GL_TEXTURE_2D);
+		//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	}
+	else{
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);//
+		glEnableClientState(GL_TEXTURE_2D);//
+
+		glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
+		glNormal3d(normales[0].x, normales[0].y, normales[0].z);
+		glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);//
+
+		glColor4d(colores[0].r, colores[0].g, colores[0].b, colores[0].a);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//Dibuja lineas
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);//Dibuja relleno
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_TEXTURE_2D);
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	
-	glColor4d(colores[0].r, colores[0].g, colores[0].b, colores[0].a);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0,3);
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_TEXTURE_2D);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	}
 }
+
+void Triangulo::capturaTextura(GLdouble winWidth, GLdouble winHeigth){
+	//AQUI CAMBIO LAS COORD DE TEXTURA ...
+	//Si la coord x del vertice A      es      winWidth/2 + posicion       sobre        winWidth
+	//La proporcion en cTextura        es             "ALGO"               sobre           1
+	//Y así con todas las coord de los 3 vertices
+	//    GG EZ
+
+	text = true;
+
+}
+
 
 PVec3 Triangulo::makenormal() {
 	PVec3 aux, aux2, resul;
