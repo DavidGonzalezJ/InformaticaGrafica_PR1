@@ -20,13 +20,17 @@ Escena::~Escena(){
 
 //-------------------------------------------------------------------------
 
-void Escena::draw(){
-  rect->draw();
-  ejes.draw();
-  tri->draw();
+void Escena::draw(int pato){
+	if(pato == 0)
+		rect->draw();
+
+	ejes.draw();
+	if(pato!=3)
+		triA->draw();
   //tri1->draw();
   //piramide->draw();
-  //drawDiabolo();
+	if(pato == 3)
+		drawDiabolo();
   //triA->draw();
 }
 

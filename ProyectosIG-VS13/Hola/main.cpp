@@ -107,6 +107,7 @@ int main(int argc, char *argv[]){
   actState = Estado::RECORTAR;
   glDisable(GL_DEPTH_TEST);
   escena.init();
+  escena.triA->position(0, 0);
 
   glutSetOption ( GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION ) ; 
 						         // after X-closing the window, continue execution
@@ -128,7 +129,8 @@ void display(){
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
 
-  escena.draw();
+  
+  escena.draw(actState);
 
   glPopMatrix();
   
@@ -173,10 +175,11 @@ void key(unsigned char key, int x, int y){
 	  camera.setEZ();
 	  break;
   case 'r':
-	  escena.tri->rotate();
+	  escena.triA->rotate();
 	  break;
   case 't':
-	  escena.triA->update();
+	  if(actState == Estado::ANIMAR)
+		escena.triA->update();
 	  break;
   case 'x':
 	  escena.rotateDiabolo(key);
@@ -188,15 +191,16 @@ void key(unsigned char key, int x, int y){
 	 escena.rotateDiabolo(key);
 	  break;
   case '3':
-	  //Capturo las coord de textura y cambio a ANIMAR//
-	 /*Aquí hay que hacer un save de textura o algo ????????????????*/
-	  if (actState == Estado::RECORTAR || actState == Estado::DIABOLO){
+	  if (actState == Estado::RECORTAR){
+		  glDisable(GL_DEPTH_TEST);
+		  escena.triA->capturaTextura(winWidth,winHeight);
 		  actState = Estado::ANIMAR;
-		  escena.tri->capturaTextura();
+		  escena.triA->reset();
 	  }
 	  break;
   case '4':
-	  actState == Estado::DIABOLO;
+	  actState = Estado::DIABOLO;
+	  escena.piramide->setTexCoord(escena.triA->cTextura);
 	  glEnable(GL_DEPTH_TEST);
 	  break;
   default:
@@ -260,9 +264,9 @@ void mouse(int button, int state, int x, int y){
 void motion(int x, int y){
 	int transX = -winWidth / 2 + x;
 	int transY = -(-winHeight / 2 + y);
-	if (escena.tri->dentro(transX, transY)) {
+	if (escena.triA->dentro(transX, transY)) {
 		//std::cout << "MANOLITO" << "\n";
-		escena.tri->position(transX, transY);
+		escena.triA->position(transX, transY);
 		glutPostRedisplay();
 	}
 }

@@ -15,7 +15,6 @@ Triangulo::Triangulo(GLdouble radio):radio(radio)
 	cTextura[0].set(0, 1);
 	cTextura[1].set(0, 0);
 	cTextura[2].set(1, 1);
-	//cTextura[3].set(1, 0);
 	text = false;
 	GLdouble pi = 3.1416;
 	CoordenadasTriangulo[0]={radio,0,0};
@@ -80,9 +79,11 @@ void Triangulo::capturaTextura(GLdouble winWidth, GLdouble winHeigth){
 	//La proporcion en cTextura        es             "ALGO"               sobre           1
 	//Y así con todas las coord de los 3 vertices
 	//    GG EZ
-
+	cTextura[0].set((winWidth / 2 + CoordenadasTriangulo[0].x) / winWidth, (winHeigth / 2 + CoordenadasTriangulo[0].y) / winHeigth);
+	cTextura[1].set((winWidth / 2 + CoordenadasTriangulo[1].x) / winWidth, (winHeigth / 2 + CoordenadasTriangulo[1].y) / winHeigth);
+	cTextura[2].set((winWidth / 2 + CoordenadasTriangulo[2].x) / winWidth, (winHeigth / 2 + CoordenadasTriangulo[2].y) / winHeigth);
+	
 	text = true;
-
 }
 
 
@@ -136,4 +137,10 @@ bool Triangulo::dentro(GLdouble x, GLdouble y){
 	else if ((CoordenadasTriangulo[2].x - x) * (CoordenadasTriangulo[0].y - y) - (CoordenadasTriangulo[2].y - y) * (CoordenadasTriangulo[0].x - x) < 0)
 		return false;
 	else return true;
+}
+
+void Triangulo::setcTex(CText2 const cTexturo[3]) {
+	for (int i = 0; i < 3; i++) {
+		cTextura[i].set(cTexturo[i].s, cTexturo[i].t);
+	}
 }

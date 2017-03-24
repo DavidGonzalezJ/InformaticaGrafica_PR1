@@ -24,3 +24,11 @@ void PiramideTri::draw()const {
 		triangulos[i]->draw();
 	}
 }
+
+
+void PiramideTri::setTexCoord(CText2 const cTextura[3]) {
+	for (int i = 0; i < 3; i++) {
+		triangulos[i]->setcTex(cTextura);
+		triangulos[i]->text = true;
+	}
+}

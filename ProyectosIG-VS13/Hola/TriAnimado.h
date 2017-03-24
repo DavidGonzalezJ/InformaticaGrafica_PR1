@@ -7,6 +7,8 @@ public:
 	TriAnimado(GLdouble radio, GLdouble radioGiro, GLdouble giro, GLdouble rota);
 	virtual ~TriAnimado();
 	void update();
+	void reset();
+
 private:
 	GLdouble anguloRota;
 	GLdouble anguloGiro;
