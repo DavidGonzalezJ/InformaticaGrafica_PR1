@@ -8,6 +8,10 @@ void Escena::init(){
 	glEnable(GL_TEXTURE_2D);
 	tex.init();
 	tex.load("../bmps/Zelda.bmp");
+	tex1.init();
+	tex1.load("../bmps/ray.bmp",0.5);
+	tex2.init();
+	tex2.load("../bmps/earth24.bmp");
 	
   // luces
 }
@@ -21,17 +25,48 @@ Escena::~Escena(){
 //-------------------------------------------------------------------------
 
 void Escena::draw(int pato){
-	if(pato == 0)
+	switch (pato)
+	{
+	case 0:
 		rect->draw();
-
-	ejes.draw();
-	if(pato!=3)
+		ejes.draw();
 		triA->draw();
-  //tri1->draw();
-  //piramide->draw();
-	if(pato == 3)
+		break;
+	case 1:
+		ejes.draw();
+		triA->draw();
+		break;
+	case 2:
+		tex.activar();
+		rect->draw();
+		tex.desactivar();
+
+		glPushMatrix();
+		glTranslated(150, 50, 0);
+		//glRotated(-45, 0, 0, 1);
+		tex2.activar();
+		rect2->draw();
+		glPopMatrix();
+		tex2.desactivar();
+
+		tex1.activar();
+		glPushMatrix();
+		glTranslated(-245, -145,0);
+		glRotated(-45, 0, 0, 1);
+		rect1->draw();
+		glPopMatrix();
+		tex1.desactivar();
+
+		ejes.draw();
+		triA->draw();
+		break;
+	case 3:
+		ejes.draw();
 		drawDiabolo();
-  //triA->draw();
+		break;
+	default:
+		break;
+	}
 }
 
 //-------------------------------------------------------------------------

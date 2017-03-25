@@ -87,7 +87,7 @@ int main(int argc, char *argv[]){
   // Initialization
   glutInitWindowSize(winWidth, winHeight);
   //glutInitWindowPosition (140, 140);
-  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+  glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
   glutInit(&argc, argv);
 
   // Window construction
@@ -104,7 +104,7 @@ int main(int argc, char *argv[]){
 
   // OpenGL basic setting
   intitGL();
-  actState = Estado::RECORTAR;
+  actState = Estado::COLLAGE;
   glDisable(GL_DEPTH_TEST);
   escena.init();
   escena.triA->position(0, 0);

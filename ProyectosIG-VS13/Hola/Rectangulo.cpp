@@ -2,7 +2,7 @@
 
 
 
-Rectangulo::Rectangulo(GLdouble base, GLdouble altura)
+Rectangulo::Rectangulo(GLdouble base, GLdouble altura): base(base), altura(altura)
 {
 	vertices[0] = { -base/2,altura/2,0.0 };
 	vertices[1] = { -base / 2, -altura / 2, 0.0 };
@@ -38,9 +38,18 @@ void Rectangulo::draw()const{
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 }
-void Rectangulo::set(GLdouble base, GLdouble altura){
+void Rectangulo::set(GLdouble base1, GLdouble altura1){
+	base = base1;
+	altura = altura1;
 	vertices[0] = { -base / 2, altura / 2, 0.0 };
 	vertices[1] = { -base / 2, -altura / 2, 0.0 };
 	vertices[2] = { base / 2, altura / 2, 0.0 };
 	vertices[3] = { base / 2, -altura / 2, 0.0 };
+}
+
+void Rectangulo::position(GLdouble x, GLdouble y) {
+	vertices[0] = { -base / 2 + x,altura / 2+y,0.0 };
+	vertices[1] = { -base / 2+x, -altura / 2+y, 0.0 };
+	vertices[2] = { base / 2+x, altura / 2+y, 0.0 };
+	vertices[3] = { base / 2+x, -altura / 2+y, 0.0 };
 }
