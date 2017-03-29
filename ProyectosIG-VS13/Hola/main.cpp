@@ -182,13 +182,26 @@ void key(unsigned char key, int x, int y){
 		escena.triA->update();
 	  break;
   case 'x':
-	  escena.rotateDiabolo(key);
+	  if (actState == Estado::DIABOLO)
+		escena.rotateDiabolo(key);
 	  break;
   case 'y':
-	  escena.rotateDiabolo(key);
+	  if (actState == Estado::DIABOLO)
+		escena.rotateDiabolo(key);
 	  break;
   case 'z':
-	 escena.rotateDiabolo(key);
+	  if (actState== Estado::DIABOLO)
+		escena.rotateDiabolo(key);
+	  break;
+  case '2':
+	  if (actState == Estado::COLLAGE){
+		  //CAPTURAMOS y sobreescribimos la text1
+		  escena.tex.activar();
+		  escena.tex.save("../bmps/collage.bmp");
+		  escena.tex.load("../bmps/collage.bmp");
+		  escena.tex.desactivar();
+		  actState = Estado::RECORTAR;
+	  }
 	  break;
   case '3':
 	  if (actState == Estado::RECORTAR){
@@ -260,7 +273,7 @@ void mouse(int button, int state, int x, int y){
 }
 
 //-------------------------------------------------------------------------
-
+ 
 void motion(int x, int y){
 	int transX = -winWidth / 2 + x;
 	int transY = -(-winHeight / 2 + y);

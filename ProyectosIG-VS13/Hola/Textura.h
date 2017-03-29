@@ -12,7 +12,7 @@ public:
 	}; // establecer filtros
 	void activar() {
 		glBindTexture(GL_TEXTURE_2D, id); 
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE/*…*/); 
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE); 
 	};
 
 	void desactivar() { 
@@ -25,7 +25,7 @@ public:
 public:
 	GLuint w, h; // dimensiones de la imagen
 	GLuint id; // identificador interno de la textura
-	GLubyte* pA;
+	PixMap24RGB pA;
 	//CText2
 };
 /*

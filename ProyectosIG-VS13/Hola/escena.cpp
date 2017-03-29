@@ -9,9 +9,9 @@ void Escena::init(){
 	tex.init();
 	tex.load("../bmps/Zelda.bmp");
 	tex1.init();
-	tex1.load("../bmps/ray.bmp",0.5);
+	tex1.load("../bmps/ray.bmp",150);
 	tex2.init();
-	tex2.load("../bmps/earth24.bmp");
+	tex2.load("../bmps/smiley.bmp",200);
 	
   // luces
 }
@@ -28,15 +28,19 @@ void Escena::draw(int pato){
 	switch (pato)
 	{
 	case 0:
+		tex.activar();
 		rect->draw();
 		ejes.draw();
 		triA->draw();
+		//tex.desactivar();
 		break;
 	case 1:
 		ejes.draw();
 		triA->draw();
 		break;
 	case 2:
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		tex.activar();
 		rect->draw();
 		tex.desactivar();
@@ -59,6 +63,7 @@ void Escena::draw(int pato){
 
 		ejes.draw();
 		triA->draw();
+		glDisable(GL_BLEND);
 		break;
 	case 3:
 		ejes.draw();

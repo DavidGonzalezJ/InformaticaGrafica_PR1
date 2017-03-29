@@ -41,8 +41,12 @@ bool Textura::load(const std::string & BMP_Name, PixMap24RGB::rgb_color colorKey
 }
 
 void Textura::save(const std::string & BMP_Name) {
-	pA[w*h];
-	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB,GL_UNSIGNED_BYTE, pA);
+	pA.create_pixmap(800, 600);
+	glReadBuffer(GL_FRONT);
+	glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,	0, 0, 800, 600,0);
+	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGB,GL_UNSIGNED_BYTE,pA.data());
+	glReadBuffer(GL_BACK);
+	pA.save_bmpBGR(BMP_Name);
 	// pA-> array donde guardar los datos (de tipo y tamaño adecuado)
 	/*…*/ // y guardar
 }
