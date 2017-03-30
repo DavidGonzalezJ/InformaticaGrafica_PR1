@@ -37,7 +37,7 @@ void motion(int x, int y);
 //------------ ESTADOS -----------------------------------------------------
 enum Estado{RECORTAR,ANIMAR,COLLAGE,DIABOLO};
 Estado actState;
-
+bool basaur=false;
 //-------------------------------------------------------------------------
 void intitGL(){ //OpenGL basic setting
 
@@ -121,6 +121,18 @@ int main(int argc, char *argv[]){
 }
 
 //-------------------------------------------------------------------------
+void tilling(){
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			viewPort.set((winWidth / 3)*i, (winHeight / 4)*j, (winWidth / 3), winWidth / 4);
+			escena.draw(actState);
+		}
+	}
+	viewPort.set(0, 0, winWidth, winHeight);
+}
+//-------------------------------------------------------------------------
 
 void display(){
  
@@ -129,8 +141,11 @@ void display(){
   glMatrixMode(GL_MODELVIEW);
   glPushMatrix();
 
-  
-  escena.draw(actState);
+  if (!basaur)
+	escena.draw(actState);
+  else{
+	  tilling();
+  }
 
   glPopMatrix();
   
@@ -151,7 +166,6 @@ void resize(int newWidth, int newHeight){
   camera.setVV(winWidth, winHeight);
 }
 
-
 //-------------------------------------------------------------------------
 
 void key(unsigned char key, int x, int y){
@@ -171,6 +185,11 @@ void key(unsigned char key, int x, int y){
   case 'l':
 	  camera.set3D(); 
 	  break;
+  case 'm':
+	  if (actState == Estado::DIABOLO){
+		  basaur= !basaur;
+	  }
+	  break;
   case 'o':
 	  camera.setEZ();
 	  break;
@@ -178,23 +197,29 @@ void key(unsigned char key, int x, int y){
 	  escena.triA->rotate();
 	  break;
   case 't':
-	  if(actState == Estado::ANIMAR)
+	  if (actState == Estado::ANIMAR){
+		basaur = false;
 		escena.triA->update();
+	  }
 	  break;
   case 'x':
-	  if (actState == Estado::DIABOLO)
-		escena.rotateDiabolo(key);
+	  if (actState == Estado::DIABOLO){
+		  escena.rotateDiabolo(key);
+	  }
 	  break;
   case 'y':
-	  if (actState == Estado::DIABOLO)
-		escena.rotateDiabolo(key);
+	  if (actState == Estado::DIABOLO){
+		  escena.rotateDiabolo(key);
+	  }
 	  break;
   case 'z':
-	  if (actState== Estado::DIABOLO)
-		escena.rotateDiabolo(key);
+	  if (actState == Estado::DIABOLO){
+		  escena.rotateDiabolo(key);
+	  }
 	  break;
   case '2':
 	  if (actState == Estado::COLLAGE){
+		  basaur = false;
 		  //CAPTURAMOS y sobreescribimos la text1
 		  escena.tex.activar();
 		  escena.tex.save("../bmps/collage.bmp");
@@ -205,6 +230,7 @@ void key(unsigned char key, int x, int y){
 	  break;
   case '3':
 	  if (actState == Estado::RECORTAR){
+		  basaur = false;
 		  glDisable(GL_DEPTH_TEST);
 		  escena.triA->capturaTextura(winWidth,winHeight);
 		  actState = Estado::ANIMAR;
@@ -213,6 +239,7 @@ void key(unsigned char key, int x, int y){
 	  break;
   case '4':
 	  actState = Estado::DIABOLO;
+	  basaur = false;
 	  escena.piramide->setTexCoord(escena.triA->cTextura);
 	  glEnable(GL_DEPTH_TEST);
 	  break;
@@ -284,4 +311,3 @@ void motion(int x, int y){
 	}
 }
 
-//-------------------------------------------------------------------------

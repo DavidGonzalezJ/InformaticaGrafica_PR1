@@ -38,7 +38,9 @@ public:
   Textura tex, tex1, tex2;
   Rectangulo* rect = new Rectangulo(800,600);
   Rectangulo* rect1 = new Rectangulo(250, 180);
-  Rectangulo* rect2 = new Rectangulo(200, 120);
+  Rectangulo* rect2 = new Rectangulo(130, 120);
+  PixMap24RGB::rgb_color Color;
+ 
 };
 
 //-------------------------------------------------------------------------

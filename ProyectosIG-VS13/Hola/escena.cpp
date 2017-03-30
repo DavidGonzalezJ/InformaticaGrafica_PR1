@@ -4,6 +4,11 @@
 //-------------------------------------------------------------------------
 
 void Escena::init(){
+	//color
+	Color.red = 255;
+	Color.blue = 255;
+	Color.green = 255;
+
   // texturas
 	glEnable(GL_TEXTURE_2D);
 	tex.init();
@@ -11,7 +16,7 @@ void Escena::init(){
 	tex1.init();
 	tex1.load("../bmps/ray.bmp",150);
 	tex2.init();
-	tex2.load("../bmps/smiley.bmp",200);
+	tex2.load("../bmps/smiley.bmp", Color, 200);
 	
   // luces
 }
@@ -30,15 +35,19 @@ void Escena::draw(int pato){
 	case 0:
 		tex.activar();
 		rect->draw();
+		tex.desactivar();
+
 		ejes.draw();
 		triA->draw();
-		//tex.desactivar();
 		break;
 	case 1:
-		ejes.draw();
+		tex.activar();
 		triA->draw();
+		tex.desactivar();
+		ejes.draw();
 		break;
 	case 2:
+		
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		tex.activar();
@@ -60,14 +69,14 @@ void Escena::draw(int pato){
 		rect1->draw();
 		glPopMatrix();
 		tex1.desactivar();
-
-		ejes.draw();
-		triA->draw();
+		
 		glDisable(GL_BLEND);
 		break;
 	case 3:
 		ejes.draw();
+		tex.activar();
 		drawDiabolo();
+		tex.desactivar();
 		break;
 	default:
 		break;
