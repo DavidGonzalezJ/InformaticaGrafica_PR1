@@ -33,5 +33,7 @@ void TriAnimado::update() {
 void TriAnimado::reset() {
 	centro = { radioGiro,0,0 };
 	angulo = 0;
+	anguloAcumuladoGiro = 0;
+	anguloAcumuladoRot = 0;
 	actualizaCoord();
 }

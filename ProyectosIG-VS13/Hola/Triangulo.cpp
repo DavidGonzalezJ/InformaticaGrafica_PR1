@@ -38,20 +38,15 @@ void Triangulo::draw()const {
 
 	if (!text){
 		glEnableClientState(GL_VERTEX_ARRAY);
-		//glEnableClientState(GL_TEXTURE_COORD_ARRAY);//
-		//glEnableClientState(GL_TEXTURE_2D);//
 
 		glVertexPointer(3, GL_DOUBLE, 0, CoordenadasTriangulo);
 		glNormal3d(normales[0].x, normales[0].y, normales[0].z);
-		//glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);//
 
 		glColor4d(colores[0].r, colores[0].g, colores[0].b, colores[0].a);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//Dibuja lineas
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);//Dibuja relleno
 		glDisableClientState(GL_VERTEX_ARRAY);
-		//glDisableClientState(GL_TEXTURE_2D);
-		//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	}
 	else{
 		glEnableClientState(GL_VERTEX_ARRAY);
@@ -63,9 +58,7 @@ void Triangulo::draw()const {
 		glTexCoordPointer(2, GL_DOUBLE, 0, cTextura);//
 
 		glColor4d(colores[0].r, colores[0].g, colores[0].b, colores[0].a);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//Dibuja lineas
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);//Dibuja relleno
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glDisableClientState(GL_TEXTURE_2D);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -74,11 +67,6 @@ void Triangulo::draw()const {
 }
 
 void Triangulo::capturaTextura(GLdouble winWidth, GLdouble winHeigth){
-	//AQUI CAMBIO LAS COORD DE TEXTURA ...
-	//Si la coord x del vertice A      es      winWidth/2 + posicion       sobre        winWidth
-	//La proporcion en cTextura        es             "ALGO"               sobre           1
-	//Y así con todas las coord de los 3 vertices
-	//    GG EZ
 	cTextura[0].set((winWidth / 2 + CoordenadasTriangulo[0].x) / winWidth, (winHeigth / 2 + CoordenadasTriangulo[0].y) / winHeigth);
 	cTextura[1].set((winWidth / 2 + CoordenadasTriangulo[1].x) / winWidth, (winHeigth / 2 + CoordenadasTriangulo[1].y) / winHeigth);
 	cTextura[2].set((winWidth / 2 + CoordenadasTriangulo[2].x) / winWidth, (winHeigth / 2 + CoordenadasTriangulo[2].y) / winHeigth);

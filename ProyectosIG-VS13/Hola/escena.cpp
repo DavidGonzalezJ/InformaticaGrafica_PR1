@@ -117,7 +117,6 @@ void Escena::rotateDiabolo(char aux){
 	default:
 		break;
 	}
-	//drawDiabolo();
 }
 
 

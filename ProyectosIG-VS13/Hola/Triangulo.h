@@ -28,5 +28,3 @@ protected:
 	PVec3 centro = { 0, 0, 0 };
 
 };
-
-////glPolygonModel(GL_FRONT_AND_BACK,GL_LINES);			Esto es para que se dibujen solo las líneas

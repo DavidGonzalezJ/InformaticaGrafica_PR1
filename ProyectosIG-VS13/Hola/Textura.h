@@ -28,11 +28,3 @@ public:
 	PixMap24RGB pA;
 	//CText2
 };
-/*
- Para trabajar en modo RGBA, activa el modo RGBA en glutInitDisplayMode() y
-añade a la clase Textura los métodos :
-bool load(const std::string & BMP_Name, GLubyte alpha);
-bool load(const std::string & BMP_Name, PixMap24RGB::rgb_color colorKey,
-	GLubyte alpha);
-El parámetro alpha indica el grado de transparencia para la nueva componente del
-color, y colorKey indica el color(RGB) que se quiere hacer transparente.*/

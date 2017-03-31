@@ -33,6 +33,7 @@ void key(unsigned char key, int x, int y);
 void specialKey(int key, int x, int y);
 void mouse(int button, int state, int x, int y);
 void motion(int x, int y);
+bool pinchado;
 
 //------------ ESTADOS -----------------------------------------------------
 enum Estado{RECORTAR,ANIMAR,COLLAGE,DIABOLO};
@@ -105,11 +106,12 @@ int main(int argc, char *argv[]){
   // OpenGL basic setting
   intitGL();
   actState = Estado::COLLAGE;
+  pinchado = false;
   glDisable(GL_DEPTH_TEST);
   escena.init();
   escena.triA->position(0, 0);
 
-  glutSetOption ( GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION ) ; 
+  glutSetOption ( GLUT_ACTION_ON_WINDOW_CLOSE, /*GLUT_ACTION_CONTINUE_EXECUTION*/GLUT_ACTION_EXIT ) ; 
 						         // after X-closing the window, continue execution
   glutMainLoop();
 
@@ -236,6 +238,13 @@ void key(unsigned char key, int x, int y){
 		  actState = Estado::ANIMAR;
 		  escena.triA->reset();
 	  }
+	  else if (actState == Estado::DIABOLO) {
+		  basaur = false;
+		  glDisable(GL_DEPTH_TEST);
+		  actState = Estado::ANIMAR;
+		  camera.setEZ();
+		  escena.triA->reset();
+	  }
 	  break;
   case '4':
 	  actState = Estado::DIABOLO;
@@ -283,19 +292,15 @@ void specialKey(int key, int x, int y){
 //-------------------------------------------------------------------------
 
 void mouse(int button, int state, int x, int y){
-  if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_UP)) { // DOWN
-	/*int transX = -winWidth / 2 + x;
+  if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) { // DOWN
+	int transX = -winWidth / 2 + x;
 	int transY = -(-winHeight/2 + y);
 	if (escena.triA->dentro(transX, transY)) {
-	std::cout << "MANOLITO"<< "\n";
-		
-		
+	  pinchado = true;
 	}
-	std::cout << x << " " << y << "\n";
-	std::cout << transX << " " << transY << "\n";*/
   }
   else {
-
+	  pinchado = false;
   }
 }
 
@@ -304,8 +309,7 @@ void mouse(int button, int state, int x, int y){
 void motion(int x, int y){
 	int transX = -winWidth / 2 + x;
 	int transY = -(-winHeight / 2 + y);
-	if (escena.triA->dentro(transX, transY)) {
-		//std::cout << "MANOLITO" << "\n";
+	if (pinchado && actState == Estado::RECORTAR) {
 		escena.triA->position(transX, transY);
 		glutPostRedisplay();
 	}
